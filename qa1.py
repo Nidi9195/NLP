@@ -167,7 +167,7 @@ tf.reset_default_graph()
 
 recurrent_cell_size = 128
 D = 50 #Dimensions of word vectors
-learning_rate = 0.005
+learning_rate = 0.009
 input_p, output_p = 0.5, 0.5 #Drop out probability 
 batch_size = 128 #How many questions to train at a time
 passes = 4 #passes of episodic memory
@@ -182,7 +182,7 @@ training_iterations_count = 400000
 # How many questions the network trains on each time it is trained.
 # Some questions are counted multiple times.
 
-display_step = 100
+display_step = 1000
 # How many iterations of training occur before each validation check.
 print("Creating input module")
 ''' Input module '''
@@ -505,7 +505,7 @@ def train(iterations, batch_size):
             # Display results
             print("Iter " + str(j/batch_size) + ", Minibatch Loss= ",tmp_loss,
                   "Accuracy= ", np.mean(acc))
-train(30000,batch_size) # Small amount of training for preliminary results
+train(30000000,batch_size) # Small amount of training for preliminary results
 
 ancr = sess.run([corrbool,locs, total_loss, logits, facts_0s, w_1]+attends+
                 [query, cs, question_module_outputs],feed_dict=validation_set)
